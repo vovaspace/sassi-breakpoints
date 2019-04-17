@@ -1,11 +1,11 @@
 {
-  "name": "@sassy/breakpoints",
+  "name": "@sassi/breakpoints",
   "version": "1.0.0",
   "description": "Simple @media breakpoints in Sass/SCSS.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vovaspace/sassy-breakpoints.git"
+    "url": "git+https://github.com/vovaspace/sassi-breakpoints.git"
   },
   "keywords": [
     "sass",
@@ -17,8 +17,8 @@
   ],
   "author": "Vova Space <hi@vovaspace.com> (https://github.com/vovaspace)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vovaspace/sassy-breakpoints/issues"
-  },
-  "homepage": "https://github.com/vovaspace/sassy-breakpoints#readme"
+  "homepage": "https://github.com/vovaspace/sassi-breakpoints#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
