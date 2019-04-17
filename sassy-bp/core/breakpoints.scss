@@ -1,0 +1,65 @@
+@mixin breakpoint-up($value) {
+  $bp: 0;
+
+  @if is-number($value) {
+    $bp: parse-px($value);
+  } @else {
+    $bp: get-bp($value);
+
+    @if check-min-breakpoint($value) {
+      @error "You cannot use the minimum breakpoint when 'disallow-min-breakpoint' is 'true'.";
+    }
+  }
+
+  @media screen and (min-width: lead-to-units($bp)) {
+    @content;
+  }
+}
+
+
+@mixin breakpoint-range($minValue, $maxValue) {
+  $bpMin: 0;
+  $bpMax: 0;
+
+  @if is-number($minValue) {
+    $bpMin: parse-px($minValue);
+  } @else {
+    $bpMin: get-bp($minValue);
+
+    @if $minValue == $maxValue {
+      @error 'Arguments must be different.';
+    }
+
+    @if check-min-breakpoint($minValue) {
+      $bpMin: 0;
+    }
+  }
+
+  @if is-number($maxValue) {
+    $bpMax: parse-px($maxValue);
+  } @else {
+    $bpMax: get-next-bp($maxValue);
+  }
+
+  @if $bpMin >= $bpMax {
+    @error 'The upper breakpoint must be larger than the lower one.';
+  }
+
+  @media screen and (min-width: lead-to-units($bpMin)) and (max-width: lead-to-units($bpMax - 0.02)) {
+    @content;
+  }
+}
+
+
+@mixin breakpoint-only($value) {
+  $bp: get-bp($value);
+  $bpNext: get-next-bp($value);
+
+  @if check-min-breakpoint($value) {
+    $bp: 0;
+  }
+
+  @include breakpoint-range($bp, $bpNext) {
+    @content;
+  }
+}

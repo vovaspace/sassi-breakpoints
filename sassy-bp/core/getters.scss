@@ -1,0 +1,29 @@
+@function get-bp($bp) {
+  $bpMap: map-get($sassy-bp, bp);
+
+  @if map-has-key($bpMap, $bp) {
+    @return map-get($bpMap, $bp);
+  } @else {
+    @error 'Unknown breakpoint: ' + $bp + '.';
+  }
+}
+
+
+@function get-bp-index($bp) {
+  $bpValue: get-bp($bp);
+  $bpMap: map-get($sassy-bp, bp);
+  $bpList: ($bp $bpValue);
+  @return index($bpMap, $bpList);
+}
+
+
+@function get-next-bp($bp) {
+  $bpMap: map-get($sassy-bp, bp);
+  $index: get-bp-index($bp);
+
+  @if $index != length($bpMap) {
+    @return nth(nth($bpMap, $index + 1), 2);
+  }
+
+  @error "You cannot use the maximal breakpoint. Try to use 'breakpoint-up'.";
+}
