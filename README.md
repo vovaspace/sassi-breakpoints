@@ -2,7 +2,8 @@
 
 Simple @media breakpoints in Sass/SCSS.
 
-```Sass
+
+```scss
 .block {
   color: #1771f1;
 
@@ -40,7 +41,7 @@ There are at least two connection options:
 
 **Note!** Do not forget to put down your own path to ```node_modules```.
 
-```Sass
+```scss
 @import '../node_modules/@sassi/breakpoints/breakpoints';
 ```
 
@@ -61,7 +62,7 @@ gulp.task('styles', () => (
 
 And @import anywhere in your Sass/SCSS:
 
-```Sass
+```scss
 @import 'breakpoints';
 ```
 
@@ -70,7 +71,7 @@ And @import anywhere in your Sass/SCSS:
 
 If you do not configure breakpoints yourself, default values are applied:
 
-```Sass
+```scss
 $sassi-bp: (
   bp: (
     sm: 320,
@@ -182,7 +183,7 @@ But if you use Sass syntax, you will have to use the setter-functions.
 
 In all mixins above, you can use a preset breakpoint called by name. To overwrite the default configuration, use ```set-bp()```:
 
-```Sass
+```scss
 $sassi-bp: set-bp((mobile: 300, tablet: 640, laptop: 1000, widescreen: 1200));
 ```
 
@@ -195,13 +196,13 @@ $sassi-bp: set-bp((mobile: 300, tablet: 640, laptop: 1000, widescreen: 1200));
 
 By default, @sassi/breakpoints uses pixels, but you can reassign them to rems.
 
-```Sass
+```scss
 $sassi-bp: set-bp-units(rem);
 ```
 
 For example:
 
-```Sass
+```scss
 $sassi-bp: set-bp-units(rem);
 
 .block {
@@ -239,7 +240,7 @@ Base font size is the number by which rems are calculated.
 
 For example:
 
-```Sass
+```scss
 $sassi-bp: set-bp-units(rem);
 $sassi-bp: set-bp-base-font-size(20);
 
@@ -273,13 +274,13 @@ This is ```false``` by **default** .
 
 ```disallow-min-breakpoint: true``` prevents using ```breakpoint-up``` with minimal preset breakpoint.
 
-```Sass
+```scss
 $sassi-bp: set-bp-disallow-min-breakpoint(true);
 ```
 
 For example (with default configuration):
 
-```Sass
+```scss
 $sassi-bp: set-bp-disallow-min-breakpoint(true);
 
 .block {
@@ -296,7 +297,7 @@ $sassi-bp: set-bp-disallow-min-breakpoint(true);
 
 Preferably:
 
-```Sass
+```scss
 .block {
   color: #052555;
 
@@ -309,7 +310,7 @@ Preferably:
 Also when using ```breakpoint-only``` and ```breakpoint-range```, the **minimal breakpoint** will be **replaced by 0**.
 
 For example:
-```Sass
+```scss
 .block {
   
   @include breakpoint-only(sm) {
@@ -345,7 +346,7 @@ Will be compiled to:
 
 For example (from ```400px``` to ```lg```):
 
-```Sass
+```scss
 .block {
 
   @include breakpoint-range(400, lg) {
