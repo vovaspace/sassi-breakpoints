@@ -18,12 +18,12 @@
 @function lead-to-units($number) {
   $units: map-get($sassi-bp, units);
 
-  @if $units == px {
-    @return strip-unit($number) * 1px;
-  } @else {
-    $baseFz: map-get($sassi-bp, base-font-size);
+  @if $units == rem {
+    $baseFz: get-base-fz();
     $baseFz: strip-unit($baseFz);
     @return strip-unit($number) / $baseFz * 1rem;
+  } @else {
+    @return strip-unit($number) * 1px;
   }
 }
 

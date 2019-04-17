@@ -9,6 +9,15 @@
 }
 
 
+@function get-base-fz() {
+  @if map-has-key($sassi-bp, base-font-size) {
+    @return map-get($sassi-bp, base-font-size);
+  }
+
+  @error "You must specify 'base-font-size' to use rems.";
+}
+
+
 @function get-bp-index($bp) {
   $bpValue: get-bp($bp);
   $bpMap: map-get($sassi-bp, bp);
