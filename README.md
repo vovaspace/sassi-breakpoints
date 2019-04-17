@@ -42,7 +42,7 @@ There are at least two connection options:
 **Note!** Do not forget to put down your own path to ```node_modules```.
 
 ```scss
-@import '../node_modules/@sassi/breakpoints/breakpoints';
+@import '../node_modules/@sassi/breakpoints/sassi-breakpoints';
 ```
 
 ### Via Gulp
@@ -63,7 +63,7 @@ gulp.task('styles', () => (
 And @import anywhere in your Sass/SCSS:
 
 ```scss
-@import 'breakpoints';
+@import 'sassi-breakpoints';
 ```
 
 
