@@ -1,6 +1,6 @@
 {
   "name": "@sassi/breakpoints",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simple @media breakpoints in Sass/SCSS.",
   "main": "index.js",
   "repository": {
