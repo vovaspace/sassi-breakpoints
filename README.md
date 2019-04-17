@@ -216,7 +216,7 @@ $sassi-bp: set-bp-units(rem);
 
 Will be compiled to:
 
-```CSS
+```css
 .block {
   color: #1771f1;
 }
@@ -255,7 +255,7 @@ block {
 
 Will be compiled to:
 
-```CSS
+```css
 .block {
   color: #1771f1;
 }
@@ -328,7 +328,7 @@ For example:
 
 Will be compiled to:
 
-```CSS
+```css
 @media screen and (min-width: 0) and (max-width: 768px) {
   .block {
     color: #052555;
@@ -361,7 +361,7 @@ For example (from ```400px``` to ```lg```):
 
 Not OK
 
-```CSS
+```css
 /*                                        ___________↓____  */
 @media screen and (min-width: 200px) and (max-width: 640px) {
   .block {
@@ -378,7 +378,7 @@ Not OK
 ```
 
 OK
-```CSS
+```css
 /*                                        ___________↓____  */
 @media screen and (min-width: 200px) and (max-width: 639.98px) {
   .block {
