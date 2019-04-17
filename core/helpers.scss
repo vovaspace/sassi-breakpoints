@@ -1,0 +1,79 @@
+@function change-map($map, $key, $value) {
+  $newMap: map-remove($map, $key);
+  $newValue: ($key: $value);
+  $newMap: map-merge($newMap, $newValue);
+  @return $newMap;
+}
+
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
+@function lead-to-units($number) {
+  $units: map-get($sassi-bp, units);
+
+  @if $units == rem {
+    $baseFz: get-base-fz();
+    $baseFz: strip-unit($baseFz);
+    @return strip-unit($number) / $baseFz * 1rem;
+  } @else {
+    @return strip-unit($number) * 1px;
+  }
+}
+
+
+@function is-bp-first($bp) {
+  $index: get-bp-index($bp);
+
+  @if $index == 1 {
+    @return true;
+  }
+
+  @return false;
+}
+
+
+@function is-bp-last($bp) {
+  $bpMap: map-get($sassi-bp, bp);
+  $index: get-bp-index($bp);
+
+  @if $index == length($bpMap) {
+    @return true;
+  }
+
+  @return false;
+}
+
+
+@function is-number($number) {
+  @if type-of($number) == 'number' {
+    @return true;
+  }
+
+  @return false;
+}
+
+
+@function parse-px($number) {
+  @if not (unit($number) == 'px' or unitless($number)) {
+    @error 'Breakpoint must be a number or a value in pixels.';
+  }
+
+  @return strip-unit($number);
+}
+
+
+@function check-min-breakpoint($bp) {
+  $isDisalow: map-get($sassi-bp, disallow-min-breakpoint);
+  @if is-bp-first($bp) and $isDisalow {
+    @return true;
+  }
+
+  @return false;
+}

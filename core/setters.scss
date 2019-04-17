@@ -1,0 +1,42 @@
+@function set-bp($bpMap) {
+  @if type-of($bpMap) != 'map' {
+    @error "Argument must be a 'map'.";
+  }
+
+  @each $bp, $value in $bpMap {
+    $value: parse-px($value);
+  }
+
+  @return change-map($sassi-bp, 'bp', $bpMap);
+}
+
+
+@function set-bp-base-font-size($fz) {
+  @if type-of($fz) != 'number' {
+    @error "'base-font-size' must be a number or a value in pixels.";
+  }
+
+  @if unit($fz) != 'px' and unit($fz) != '' {
+    @error "'base-font-size' must be a number or a value in pixels.";
+  }
+
+  @return change-map($sassi-bp, 'base-font-size', $fz);
+}
+
+
+@function set-bp-units($unit) {
+  @if not index(('px', 'rem'), $unit) {
+    @error "'units' bust be 'px' or 'rem'.";
+  }
+
+  @return change-map($sassi-bp, 'units', $unit);
+}
+
+
+@function set-bp-disallow-min-breakpoint($bool) {
+  @if type-of($bool) != 'bool'  {
+    @error "'disallow-min-breakpoint' must be a boolean.";
+  }
+
+  @return change-map($sassi-bp, 'disallow-min-breakpoint', $bool);
+}

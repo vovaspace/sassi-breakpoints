@@ -1,0 +1,19 @@
+@mixin bp-up($value) {
+  @include breakpoint-up($value) {
+    @content;
+  }
+}
+
+
+@mixin bp-range($minValue, $maxValue) {
+  @include breakpoint-range($minValue, $maxValue) {
+    @content;
+  }
+}
+
+
+@mixin bp-only($value) {
+  @include breakpoint-only($value) {
+    @content;
+  }
+}
