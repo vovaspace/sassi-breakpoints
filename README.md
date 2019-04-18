@@ -355,6 +355,30 @@ For example (from ```400px``` to ```lg```):
 }
 ```
 
+
+## API
+
+### ```get-bp()```
+
+The function returns the numerical value of the breakpoint (without 'px').
+
+For example:
+
+```scss
+.block {
+  content: get-bp(md);
+}
+```
+
+Will be compiled to:
+
+```css
+.block {
+  content: 768;
+}
+```
+
+
 ## Overlap
 
 @sassi/breakpoints prevents breakpoint slices overlapping with a neighbouring slices by reducing the upper boundary by 0.02 px.
